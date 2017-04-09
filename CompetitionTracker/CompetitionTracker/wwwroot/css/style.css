@@ -1,0 +1,71 @@
+/*
+    Clauber Oliveira
+    Here are the coloring that I changed from the bootstrap to make the page look like ldsbc
+*/
+
+
+
+.custom-btn-link {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.custom-btn-link:hover {
+    color: #887f08;
+    background-color: transparent;
+}
+
+
+.custom-navbar-link {
+    color: #d4c60c;
+}
+
+
+.btn-primary {
+    color: #d4c60c;
+    background-color: #255a3c;
+    border-color: #255a3c;
+}
+
+
+.navbar-default .navbar-brand {
+    color: #d4c60c;
+}
+
+    .navbar-default .navbar-brand:hover,
+    .navbar-default .navbar-brand:focus {
+        color: #887f08;
+        background-color: transparent;
+    }
+
+
+.navbar-default .navbar-nav > li > a {
+    color: #d4c60c;
+}
+
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+        color: #887f08;
+        background-color: transparent;
+    }
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #887f08;
+}
+
+/*The ones underneath were here before*/
+
+
+.custom-navbar-color{
+
+	font: 400 17px/80% Georgia,"Times New Roman",serif;
+	color: #d1c770;
+	background-color:#255A3C;
+}
+
+
+.navbar-default .navbar .custom-color > div > ul > a{
+
+	  color: #d1c770;
+}
