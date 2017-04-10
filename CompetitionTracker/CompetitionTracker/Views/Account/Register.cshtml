@@ -10,59 +10,58 @@
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+        <label asp-for="FirstName" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="FirstName" class="form-control" />
             <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="LastName" class="col-md-2 control-label"></label>
+        <label asp-for="LastName" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="LastName" class="form-control" />
             <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Username" class="col-md-2 control-label"></label>
+        <label asp-for="Username" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="Username" class="form-control" />
             <span asp-validation-for="Username" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <label asp-for="Email" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <label asp-for="Password" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="Password" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="ConfirmPassword" class="form-control" />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Birthday" class="col-md-2 control-label"></label>
+        <label asp-for="Birthday" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="Birthday" class="form-control" />
             <span asp-validation-for="Birthday" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Gender" class="col-md-2 control-label"></label>
+        <label asp-for="Gender" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <select asp-for="Gender" class="form-control">
-                <option>Confused</option>
                 <option>Male</option>
                 <option>Female</option>
             </select>
@@ -70,18 +69,20 @@
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="HSName" class="col-md-2 control-label"></label>
+        <label asp-for="HSName" class="col-md-2 control-label required"></label>
         <div class="col-md-10">
             <input asp-for="HSName" class="form-control" />
             <span asp-validation-for="HSName" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <div class="checkbox">
-            <input asp-for="Authorized" class="col-md-2 checkbox" /><label asp-for="Authorized" class="control-label col-md-10"></label>
+        <div class="col-md-offset-2 col-md-10">
+            <div class="checkbox">
+                <input asp-for="Authorized" class="checkbox control-label" /><label asp-for="Authorized" class="control-label required"></label>
+            </div>
+            <span asp-validation-for="Authorized" class="text-danger"></span>
         </div>
-        <span asp-validation-for="Authorized" class="text-danger"></span>
-    </div>
+        </div>
     <fieldset>
         <legend>Additional Information</legend>
         <div class="form-group">
