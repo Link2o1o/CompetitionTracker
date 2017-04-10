@@ -16,6 +16,7 @@ namespace CompetitionTracker.Data
         }
 
         public DbSet<Competitor> Competitors { get; set; }
+        public DbSet<Person> Persons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -20,7 +20,7 @@ namespace CompetitionTracker.Models
 
         public string UserForeignKey { get; set; }
         public ApplicationUser User { get; set; }
-        public int CompetitorId { get; set; }
+        public int? CompetitorId { get; set; }
         public Competitor Competitor { get; set; }
     }
 }

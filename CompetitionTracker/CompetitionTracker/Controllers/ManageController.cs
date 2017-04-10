@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using CompetitionTracker.Models;
 using CompetitionTracker.Models.ManageViewModels;
 using CompetitionTracker.Services;
+using CompetitionTracker.Data;
 
 namespace CompetitionTracker.Controllers
 {
@@ -22,6 +23,7 @@ namespace CompetitionTracker.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private readonly ApplicationDbContext _DbContext;
 
         public ManageController(
           UserManager<ApplicationUser> userManager,
@@ -29,7 +31,8 @@ namespace CompetitionTracker.Controllers
           IOptions<IdentityCookieOptions> identityCookieOptions,
           IEmailSender emailSender,
           ISmsSender smsSender,
-          ILoggerFactory loggerFactory)
+          ILoggerFactory loggerFactory,
+          ApplicationDbContext appDbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -37,6 +40,7 @@ namespace CompetitionTracker.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
+            _DbContext = appDbContext;
         }
 
         //
@@ -341,6 +345,37 @@ namespace CompetitionTracker.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
 
+        [HttpGet]
+        public IActionResult Competition() {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Competition(CompetitionViewModel model) {
+            var user = await GetCurrentUserAsync();
+            if (user == null) {
+                return View("Error");
+            }
+            user.Person = _DbContext.Persons.Single(x => x.UserForeignKey.Equals(user.Id));
+            if (model.IsCompeting && !user.Person.IsCompeting)
+            {
+               
+                user.Person.IsCompeting = model.IsCompeting;
+                user.Person.Competitor = new Competitor
+                {
+                    Alias = user.Person.FirstName,
+                    Score = 0,
+                    Persons = new List<Person>() {
+                    user.Person
+                    },
+                };
+                _DbContext.Update(user.Person);
+                _DbContext.SaveChanges();
+            }
+            
+            return RedirectToAction("Index");
+        }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
@@ -360,7 +395,7 @@ namespace CompetitionTracker.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
         }
 
         private Task<ApplicationUser> GetCurrentUserAsync()

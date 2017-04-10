@@ -91,7 +91,7 @@ namespace CompetitionTracker.Data.Migrations
 
                     b.Property<DateTime>("Birthday");
 
-                    b.Property<int>("CompetitorId");
+                    b.Property<int?>("CompetitorId");
 
                     b.Property<string>("Experience");
 
@@ -116,7 +116,7 @@ namespace CompetitionTracker.Data.Migrations
                     b.HasIndex("UserForeignKey")
                         .IsUnique();
 
-                    b.ToTable("Person");
+                    b.ToTable("Persons");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -230,8 +230,7 @@ namespace CompetitionTracker.Data.Migrations
                 {
                     b.HasOne("CompetitionTracker.Models.Competitor", "Competitor")
                         .WithMany("Persons")
-                        .HasForeignKey("CompetitorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CompetitorId");
 
                     b.HasOne("CompetitionTracker.Models.ApplicationUser", "User")
                         .WithOne("Person")

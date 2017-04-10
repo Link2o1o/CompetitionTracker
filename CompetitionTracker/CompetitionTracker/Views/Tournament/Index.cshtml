@@ -8,33 +8,43 @@
 }
 
 <h1>Tournament</h1>
-
-@for (int i = 0; i < Model.RoundSize; i++)
+@if (Model.CompClockList != null)
 {
-    { roundNumber = i + 1; }
-    <div class="col-md-4">
-        <h3 class="bg-info"><span>Round @roundNumber</span></h3>
-        @{
-            firstIndex = i % Model.CompClockList.Count;
-        }
-        <div><span>@Model.Center.Alias</span> vs <span>@Model.CompClockList[firstIndex].Alias</span></div>
-        @for (int idx = 1; idx <= Model.CompClockList.Count / 2; idx++)
-        {
-            firstPerson = (i + idx) % Model.CompClockList.Count;
-            secondPerson = (i + Model.CompClockList.Count - idx) % Model.CompClockList.Count;
-            <div><span>@Model.CompClockList[firstPerson].Alias</span> vs <span>@Model.CompClockList[secondPerson].Alias</span></div>
-        }
-    </div>
+    @for (int i = 0; i < Model.RoundSize; i++)
+    {
+        { roundNumber = i + 1; }
+        <div class="col-md-4">
+            <h3 class="bg-info"><span>Round @roundNumber</span></h3>
+            @{
+                firstIndex = i % Model.CompClockList.Count;
+            }
+            <div><span>@Model.Center.Alias</span> vs <span>@Model.CompClockList[firstIndex].Alias</span></div>
+            @for (int idx = 1; idx <= Model.CompClockList.Count / 2; idx++)
+            {
+                firstPerson = (i + idx) % Model.CompClockList.Count;
+                secondPerson = (i + Model.CompClockList.Count - idx) % Model.CompClockList.Count;
+                <div><span>@Model.CompClockList[firstPerson].Alias</span> vs <span>@Model.CompClockList[secondPerson].Alias</span></div>
+            }
+        </div>
                 {
                     Competitor temp = Model.CompClockList[0];
                     Model.CompClockList.Remove(Model.CompClockList[0]);
                     Model.CompClockList.Add(temp);
                 }
             }
-<div class="col-md-4">
-    <h3 class="bg-info"><span>Wins</span></h3>
-    @foreach (var person in Model.CompClockList)
-    {
-        <div><span>@person.Alias: @person.Score</span></div>
-    }
-</div>
+    <div class="col-md-4">
+        <h3 class="bg-info"><span>Wins</span></h3>
+        @foreach (var person in Model.CompClockList)
+        {
+            if (person.Alias != "A Bye")
+            {
+            <div><span>@person.Alias: @person.Score</span></div>
+            }
+        }
+    </div>
+}
+else { 
+    <div class="col-md-4">
+        <h3 class="bg-info">Not enough competitors...</h3>
+    </div>
+}

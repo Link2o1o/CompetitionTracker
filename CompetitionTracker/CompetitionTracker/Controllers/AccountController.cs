@@ -130,8 +130,9 @@ namespace CompetitionTracker.Controllers
                     NextCollege = model.NextCollege,
                     Awards = model.Awards,
                     Experience = model.Experience,
+                    CompetitorId = null
                 };
-                var competitor = new Competitor
+                /*var competitor = new Competitor
                 {
                     Alias = model.FirstName,
                     Score = 0,
@@ -140,8 +141,9 @@ namespace CompetitionTracker.Controllers
                         person
                     }
                 };
-                person.UserForeignKey = user.Id;
                 person.Competitor = competitor;
+                */
+                person.UserForeignKey = user.Id;
                 _DbContext.Add(person);
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

@@ -12,10 +12,13 @@ namespace CompetitionTracker.Models
         public Competitor Center { get; set; }
 
         public RoundRobin(List<Competitor> cList) {
-            CompClockList = cList;
-            RoundSize = cList.Count - 1;
-            Center = cList[0];
-            CompClockList.Remove(cList[0]);
+            if (cList.Count > 1)
+            {
+                CompClockList = cList;
+                RoundSize = cList.Count - 1;
+                Center = cList[0];
+                CompClockList.Remove(cList[0]);
+            }
         }
     }
 }
