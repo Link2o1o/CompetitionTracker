@@ -10,11 +10,6 @@
     color: red;
 }
 
-.custom-btn-link {
-    border-color: transparent;
-    background-color: transparent;
-}
-
 .custom-btn-link:hover {
     color: #887f08;
     background-color: transparent;
@@ -74,3 +69,30 @@
 
 	  color: #d1c770;
 }
+
+/*
+    Here we are going to take care of the 3 small bars if you see the website on a mobile phone
+*/
+.navbar-toggle .custom-icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+}
+
+    .navbar-toggle .custom-icon-bar + .custom-icon-bar {
+        margin-top: 4px;
+    }
+
+.navbar-default .navbar-toggle .custom-icon-bar {
+    background-color: #d4c60c;
+}
+
+.navbar-inverse .navbar-toggle .custom-icon-bar {
+    background-color: #d4c60c;
+}
+
+.navbar-default .custom-navbar-toggle {
+    border-color: #255a3c;
+}
+/*Done with the editings for the sandwich menu*/
