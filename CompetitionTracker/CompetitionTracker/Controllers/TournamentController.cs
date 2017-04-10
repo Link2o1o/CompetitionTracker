@@ -22,7 +22,15 @@ namespace CompetitionTracker.Controllers
         public IActionResult Index()
         {
             List<Competitor> compList =_DbContext.Competitors.ToList();
-            return View(compList);
+            if (compList.Count % 2 != 0)
+            {
+                compList.Add(new Competitor
+                {
+                    Alias = "A Bye",
+                    Score = 0
+                });
+            }
+            return View(new RoundRobin(compList));
         }
     }
 }

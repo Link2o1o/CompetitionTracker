@@ -7,11 +7,15 @@ namespace CompetitionTracker.Models
 {
     public class RoundRobin
     {
-        public List<Competitor> compList;
+        public List<Competitor> CompClockList { get; set; }
+        public int RoundSize { get; set; }
+        public Competitor Center { get; set; }
+
         public RoundRobin(List<Competitor> cList) {
-            compList = cList;
+            CompClockList = cList;
+            RoundSize = cList.Count - 1;
+            Center = cList[0];
+            CompClockList.Remove(cList[0]);
         }
-
-
     }
 }
