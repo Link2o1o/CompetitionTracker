@@ -1,9 +1,14 @@
 /*
     Clauber Oliveira
     Here are the coloring that I changed from the bootstrap to make the page look like ldsbc
+    Also, the first code is to add the red * at the end of required fiels.
 */
 
-
+.required:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+}
 
 .custom-btn-link {
     border-color: transparent;
