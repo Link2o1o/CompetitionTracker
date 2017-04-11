@@ -9,6 +9,10 @@
     font-weight: bold;
     color: red;
 }
+custom-btn-link {
+    background-color: transparent;
+}
+
 
 .custom-btn-link:hover {
     color: #887f08;
@@ -18,6 +22,7 @@
 
 .custom-navbar-link {
     color: #d4c60c;
+    background-color: transparent;
 }
 
 
